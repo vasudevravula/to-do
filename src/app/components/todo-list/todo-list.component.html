@@ -1,0 +1,6 @@
+<h2>To-Do List</h2>
+<ul>
+  <li *ngFor="let todo of todos$ | async">
+    {{ todo.title }} - {{ todo.completed ? 'Completed' : 'Pending' }}
+  </li>
+</ul>
