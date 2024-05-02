@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Todo } from '../models/todo.model';
 
 @Injectable({
@@ -9,7 +9,7 @@ export class TodoService {
   private todos: Todo[] = [];
 
   // What Subject is appropriate here?
-  private todosSubject: any;
+  private todosSubject: Subject<Todo[]> = new Subject<Todo[]>;
 
   constructor() { }
 
