@@ -7,7 +7,9 @@ import { Todo } from '../models/todo.model';
 })
 export class TodoService {
   private todos: Todo[] = [];
-  private todosSubject: BehaviorSubject<Todo[]> = new BehaviorSubject<Todo[]>([]);
+
+  // What Subject is appropriate here?
+  private todosSubject: any;
 
   constructor() { }
 
@@ -15,23 +17,16 @@ export class TodoService {
     return this.todosSubject.asObservable();
   }
 
+  // Implement other CRUD operations as needed
   addTodo(todo: Todo): void {
-    this.todos.push(todo);
-    this.todosSubject.next([...this.todos]);
+    
   }
 
   deleteTodo(id: number): void {
-    this.todos = this.todos.filter(todo => todo.id !== id);
-    this.todosSubject.next([...this.todos]);
+    
   }
 
   updateTodo(todo: Todo): void {
-    const index = this.todos.findIndex(t => t.id === todo.id);
-    if (index !== -1) {
-      this.todos[index] = { ...this.todos[index], ...todo };
-      this.todosSubject.next([...this.todos]);
-    }
+    
   }
-
-  // Implement other CRUD operations as needed
 }
