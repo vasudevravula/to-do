@@ -15,15 +15,7 @@ export class AddTodoComponent {
   constructor(private todoService: TodoService) { }
 
   addTodo(): void {
-    if (this.newTodoTitle.trim()) {
-      const newTodo: Todo = {
-        id: this.generateId(),
-        title: this.newTodoTitle.trim(),
-        completed: false
-      };
-      this.todoService.addTodo(newTodo);
-      this.newTodoTitle = ''; // Clear input field
-    }
+    
   }
 
   private generateId(): number {
